@@ -1,0 +1,2 @@
+# ScoalaInfo
+Course repo.
