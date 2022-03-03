@@ -1,0 +1,6 @@
+django
+django-allauth
+django-admin-interface
+django-database-url
+MySql
+pillow
