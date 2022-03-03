@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Movie</title>
+{% endblock title %}
+
+{% block other %}
+    <style>
+        .player::-webkit-progress-bar{
+            color: red;
+        }
+    </style>
+{% endblock other %}
+
+
+<body>
+  <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"
+  >
+    <source src="MY_VIDEO.mp4" type="video/mp4" />
+    <source src="MY_VIDEO.webm" type="video/webm" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
+
+  <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+</body>
+
+{% block content %}
+        <main class='bg-primary_black h-full w-full '>
+            {{ movie|json_script:"movie_data" }}
+        
+            <video autoplay controls class="w-full h-screen player"></video>
+
+<!--    First we are selecting the video tag-->
+<!--    Then we are parsing the data sent from the form-->
+<!--    Then we create a new url at the same location-->
+<!--    Then we get an epi parameter from the for loop in movieDetail.html, and if does not have an epi then it's a movie, not a series-->
+<!--    Here we get the video files in order from the Listener-->
+        </main>
+<script>
+    const videoEl=document.querySelector('video')
+    const movie_data = JSON.parse(document.getElementById('movie_data').textContent);
+
+    const url =new URL(location.href)
+
+    const video_param = parseInt(url.searchParams.get("epi")) ? parseInt(url.searchParams.get("epi")) : 0
+    videoEl.setAttribute('src',`http://localhost:8000/media/${movie_data[video_param].file}`)
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+{% endblock content %}

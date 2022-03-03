@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Browse</title>
+{% endblock title %}
+
+{% block content %}
+    {% include 'misc/navbar.html' %}
+
+    <main class='min-h-screen w-full'>
+
+        <div class="h-screen bg-no-repeat bg-cover"
+             style="background-image: url({% static 'banner.jpg' %});">
+        </div>
+        <div class='bg-gray-900 flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-50 text-4xl font-medium">
+                    New & Popular
+                </h2>
+
+                 <div class="p-t1 flex justify-center items-center">
+                     {% for movie in movies %}
+                     <a href="{% url 'main:detail' movie_id=movie.uuid %}">
+                         <div class="w-60 h-42 m-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer">
+                             <img src="{{movie.poster.url}}" class="w-full h-full " alt="">
+                         </div>
+
+                     </a>
+                     {% endfor %}
+
+                 </div>
+            </div>
+        </div>
+
+    </main>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Profile</title>
+{% endblock title %}
+
+{% block content %}
+    {% include 'misc/navbar.html' %}
+
+    <section class='min-h-screen py-20 md:py-0 flex-col flex justify-center items-center box-shadow bg-cover'
+             style="background-image: url('{% static 'background_netflix.jpg' %}');">
+
+        <h2 class="z-10 font-medium text-white text-center font-medium text-6xl my-4 ">
+            Who's watching ?
+        </h2>
+
+        <div class="z-10 flex flex-wrap justify-center items-center w-10/12  md:w-6/12">
+            {% for profile in profiles %}
+            <a href="{% url 'main:browse' profile_id=profile.uuid %}">
+
+            <div class="w-32 h-32 m-4 bg-gray-900 bg-opacity-70 flex justify-center items-center flex-col rounded-md cursor-pointer">
+                <p class='text-6xl'>
+                    {{profile.name | slice:":1"}}
+                </p>
+                <p class='text-lg'>
+                    {{profile.name}}
+                </p>
+            </div>
+            </a>
+            {% endfor %}
+
+            <button class="w-32 h-32 m-4 bg-gray-900 bg-opacity-70 flex justify-center items-center flex-col rounded-md cursor-pointer">
+                <a href = "{% url 'main:profile_create' %}">
+                    <ion-icon class="text-6xl" name="add-circle-outline"></ion-icon>
+                    <p>Add profile</p>
+                </a>
+            </button>
+        </div>
+    </section>
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Profile Create</title>
+{% endblock title %}
+
+{% block content %}
+    {% include 'misc/navbar.html' %}
+
+    <section class='min-h-screen bg-cover py-20 md:py-32 flex-col box-shadow flex items-center'
+             style="background-image: url('{% static 'background_netflix.jpg' %}');">
+
+        <div class="z-10 min-h-full w-6/12 flex items-center flex-col">
+            <form method ='POST' class="bg-black bg-opacity-70 py-8 px-4 w-8/12 rounded-md">
+
+                <h1 class="text-4xl text-center font-medium">
+                    Add New Profile
+                </h1>
+                {% csrf_token %}
+
+                <div class="my-3 p-t flex justify-center items-center">
+                    <input required class="w-10/12 py-2 px-4 bg-gray-51 rounded-md text-gray-140" type="text" name="name" id="id_name" placeholder="Profile name">
+                </div>
+
+                <div class="my-3 p-t flex justify-center items-center">
+                    <select class="w-10/12 py-2 px-4 bg-gray-51 rounded-sm text-gray-140"  name="age_limit" id="id_age_limit" >
+                        <option value="All">All</option>
+                        <option value="Kids">Kids</option>
+                    </select>
+                </div>
+
+                 <div class="my-3 p-t flex justify-center items-center">
+                    <button class="w-10/12 px-4 py-2 rounded-md outline-none bg-primary_red text-gray-100">Create Profile</button>
+                </div>
+
+            </form> 
+        </div>
+        
+    </section>
+{% endblock content %}

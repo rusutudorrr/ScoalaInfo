@@ -1,0 +1,60 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Sing In</title>
+{% endblock title %}
+
+
+{% block content %}
+
+    {% include '../misc/navbar.html' %}
+
+    <header class="min-h-screen w-full flex justify-center py-20 box-shadow bg-no-repeat bg-cover"
+            style="background-image: url('{% static 'background_netflix.jpg' %}');">
+
+        <div class="z-10 min-h-full py-32 md:py-0 w-50 flex items-center flex-col">
+            <form method ='POST' class="bg-black bg-opacity-70 items-center py-8 px-4 w-8/12 rounded-md" >
+
+                <h1 class="p-t text-4xl font-semibold text-center ">
+                    Sign In
+                </h1>
+                {% csrf_token %}
+
+                {% if form.errors %}
+
+                <div class="text-center my-4 text-primary_red">
+                    <p class="text-primary_red ">
+                        {{form.non_field_errors}}
+                    </p>
+                </div>
+                {% endif %}
+                <div class="my-3 p-t flex justify-center items-center">
+                    <input class="w-10/12 py-2 px-4 bg-gray-51 rounded-md outline-none" type="email" name="login" id="id_login" placeholder="Email">
+                </div>
+
+                <div class="my-3 p-t flex justify-center items-center">
+                    <input class="w-10/12 py-2 px-4 bg-gray-51 rounded-md outline-none block" type="password" name="password" id="id_password" placeholder="Password">
+                </div>
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="p-t my-4">
+                <div class="p-t flex justify-center items-center">
+                    <button class="w-10/12 py-2 px-4 bg-primary_red text-gray-100 font-medium text-lg rounded-md">
+                        Sign In
+                    </button>
+                </div>
+
+                <div class="p-t text-center my-4">
+                    <p class="text-gray-140">
+                        New to Netflix? <a href="{% url 'account_signup' %}" class="text-white"> Sign up now </a>
+                    </p>
+                </div>
+                </div>
+            </form>
+        </div>
+    </header>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+{% endblock content %}
