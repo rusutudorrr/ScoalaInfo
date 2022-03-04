@@ -33,6 +33,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'main',
+    'allauth',
+    'allauth.account',
+    'django.contrib.sites',
     'admin_interface',
     'colorfield',
     'django.contrib.admin',
@@ -41,20 +45,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
-    'allauth',
-    'allauth.account',
-    'django.contrib.sites',
-
 ]
 
+# These teo lines are settings for the admin interface theme
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
+# This is for tailwind
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 SITE_ID = 1
 
+# These settings are part of all-auth
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -70,6 +72,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'netflix.urls'

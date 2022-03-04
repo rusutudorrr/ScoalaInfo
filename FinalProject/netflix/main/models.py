@@ -2,12 +2,12 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 
-
+# The first value in the tuple gets saved to the DB and the second gets printed on the page
 AGE_CHOICES = (
     ('All', 'All'),
     ('Kids', 'Kids')
 )
-
+# Same goes here
 MOVIE_CHOICES = (
     ('series', 'Series'),
     ('movie', 'Movie')

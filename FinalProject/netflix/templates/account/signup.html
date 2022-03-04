@@ -14,7 +14,7 @@
             style="background-image: url('{% static 'background_netflix.jpg' %}');">
 
         <div class="z-10 min-h-full w-50 flex items-center flex-col">
-            <form method = 'POST' class="bg-black bg-opacity-70 py-8 px-4 w-8/12 rounded-md" >
+            <form method = 'POST' action="{% url 'account_signup' %}" class="bg-black bg-opacity-70 py-8 px-4 w-8/12 rounded-md" >
 
                 <h1 class="p-t text-4xl font-semibold text-center ">
                     Sign Up
@@ -43,15 +43,6 @@
                     <input class="w-10/12 py-2 px-4 bg-gray-51 rounded-md outline-none block" type="password" name="password1" id="id_password1" placeholder="Password">
                 </div>
 
-<!--                <div class="text-gray-140 ml-t my-3 p-t flex-col">-->
-<!--                    <p>-->
-<!--                        <ul class="text-sm">Password can’t be too similar to your other personal information.</ul>-->
-<!--                        <ul class="text-sm">Password must contain at least 8 characters.</ul>-->
-<!--                        <ul class="text-sm">Password can’t be a commonly used password.</ul>-->
-<!--                        <ul class="text-sm">Password can’t be entirely numeric.</ul>-->
-<!--                    </p>-->
-<!--                </div>-->
-
                 <div class="my-3 p-t flex justify-center items-center">
                     <input class="w-10/12 py-2 px-4 bg-gray-51 rounded-md outline-none block" type="password" name="password2" id="id_password2" placeholder="Confirm Password">
                 </div>
@@ -64,7 +55,7 @@
 
                 <div class="p-t text-center text-gray-140 mt-4">
                     <p>
-                        Already have an account ? <a href="{% url 'account_login' %}" class="text-white"> Sign In</a>
+                        Already have an account ? <a href="{% url 'account_login' %}" class="p-2 text-white"> Sign In</a>
                     </p>
                 </div>
             </form>

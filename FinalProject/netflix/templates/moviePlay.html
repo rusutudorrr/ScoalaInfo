@@ -11,16 +11,14 @@
         {{ movie|json_script:"movie_data" }}
         
         <video autoplay controls class="w-full h-screen"></video>
-
+    </main>
 <!--    First we are selecting the video tag-->
 <!--    Then we are parsing the data sent from the form-->
-            
-<!--    Then we create a new url at the same location-->
-            
-<!--    Then we get an epi parameter from the for loop in movieDetail.html, and if does not have an epi then it's a movie, not a series-->
-<!--    Here we get the video files in order from the Listener-->
-    </main>
 
+<!--    Then we create a new url at the same location-->
+
+<!--    Then we get an epi parameter from the for loop in movieDetail.html, and if does not have an epi then it's a movie, not a series-->
+<!--    Here we get the video files-->
 <script>
     const videoEl=document.querySelector('video')
     const movie_data = JSON.parse(document.getElementById('movie_data').textContent);
